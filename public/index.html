@@ -1,0 +1,58 @@
+<html ng-app="App">
+<head>
+    <title>Test Angular WT</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"> 
+    <!-- Angular -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <!-- Core JS Angular -->
+    <script src="core.js"></script>
+
+</head>
+<!-- mainController funcion principal de core.js -->
+<body ng-controller="mainController">
+    <div class="container">
+        <div class="jumbotron text-center" ng-prueba>
+            <h1>{{ titulo }}</h1>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-1">
+                <table class="table table-striped">
+                    <tr class="info">
+                        <td>idCliente</td>
+                        <td>Direccion</td>
+                        <td>Tarifa</td>
+                        <td>Importe</td>
+                    </tr>
+                    <!-- ng-repeat Mostrará todos los clientes devueltos
+                        ng-click al seleccionar cliente cargará datos en formulario-->
+                    <tr ng-repeat="cliente in clientes" ng-click="selectCliente(cliente)">
+                        <td>{{ cliente.idCliente }}</td>
+                        <td>{{ cliente.direccion }}</td>
+                        <td>{{ cliente.tarifa }}</td> 
+                        <td>{{ cliente.importe }}</td>                     
+                    </tr>
+                </table>                    
+            </div>
+            <div class="col-sm-3 col-sm-offset-1 text-center">
+                <!-- Formulario -->
+                <form name="myForm">
+                    <div class="form-group">
+                        <input type="number" class="form-control input-lg text-center" placeholder="idCliente" ng-model="newCliente.idCliente" required>
+                        <br>
+                        <input type="text" class="form-control input-lg text-center" placeholder="Direccion" ng-model="newCliente.direccion" required>
+                        <br>
+                        <input type="number" class="form-control input-lg text-center" placeholder="Tarifa" ng-model="newCliente.tarifa" required>
+                        <br>
+                        <input type="number" class="form-control input-lg text-center" placeholder="Importe" ng-model="newCliente.importe" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-lg" ng-click="registrarCliente()" ng-disabled="myForm.$invalid || selected">Guardar</button>
+                    
+                    <button type="submit" class="btn btn-danger btn-lg" ng-click="borrarCliente(newCliente)" ng-disabled="!newCliente.idCliente || !newCliente.direccion || !newCliente.importe || !selected">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

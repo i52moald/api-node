@@ -44,13 +44,13 @@ module.exports = function(app) {
     console.log(req.body);
  
     var cliente = new Cliente({
-      model:    req.body.model,
-      images :  req.body.images, 
-      style:    req.body.style,
-      size :    req.body.size, 
-      colour:   req.body.colour, 
-      price:    req.body.price,
-      summary:  req.body.summary  
+      idCliente:    req.body.idCliente,
+      idContador:   req.body.idContador, 
+      potencia:     req.body.potencia,
+      tarifa :      req.body.tarifa, 
+      direccion:    req.body.direccion, 
+      importe:      req.body.importe,
+      modificado:   req.body.modificado  
     });
  
     cliente.save(function(err) {
@@ -75,7 +75,7 @@ module.exports = function(app) {
  
   //PUT - Actualiza un registro ya existente
   updateCliente = function(req, res) {
-    res.send('This is not implemented now');
+    res.send('This is not implemented yet');
   }
  
   //DELETE - Elimina un registro por su ID
@@ -106,5 +106,5 @@ module.exports = function(app) {
   app.post('/cliente', addCliente);
   app.put('/cliente/:id', updateCliente);
   app.delete('/cliente/:id', deleteCliente);
- 
+
 }

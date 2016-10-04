@@ -2,14 +2,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-// var Images = new Schema({
-//     kind: {
-//         type: String,
-//         enum: ['thumbnail', 'detail'],
-//         required: true
-//     },
-//     url: { type: String, required: true }
-// });
 // modelo de datos de cliente
 var Cliente = new Schema({
   idCliente:  { type: Number, require: true },
@@ -22,7 +14,7 @@ var Cliente = new Schema({
                 require: true },
   direccion:  { type: String, required: false },
   importe :   { type: Number, require: true },
-  modified: { type: Date, default: Date.now }    
+  modificado: { type: Date, default: Date.now }    
 });
 
 // Cliente.path('model').validate(function (v) {

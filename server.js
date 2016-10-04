@@ -1,8 +1,8 @@
 //server.js
 // Añadimos dependencias
-var express = require("express"),
+var express = require('express'),
     app     = express(),
-    http    = require("http"),
+    http    = require('http'),
     server  = http.createServer(app),
     mongoose = require("mongoose");
 
@@ -26,9 +26,15 @@ mongoose.connect('mongodb://localhost/clientes', function(err, res) {
 });
 
 // petición GET del root. Simplemente mostrará un mensaje
-app.get('/', function(req, res) {
-  res.send("Bienvenido a iPrueba");
-});
+// app.get('/', function(req, res) {
+//   res.send("Bienvenido a iPrueba");
+// });
+// app.get('/', function(req, res) {
+//   res.send('./public/index.html');
+// });
+app.get('*', function(req, res) {
+    res.sendfile('./public/index.html'); // Carga única de la vista
+  });
 
 // El servidor escucha en el puerto 3000
 server.listen(3000, function() {
